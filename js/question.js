@@ -107,6 +107,53 @@ const questionFixed2 = [
     answerText: "Mars",
   },
 ];
+const questionFixed4 = [
+  {
+    question: "Ai là người sáng lập của Microsoft?",
+    answerText: "Bill Gates",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    answerText: "Mars",
+  },
+];
 
 function renderQuestion(questions) {
   // formContainer.innerHTML = "";
@@ -156,15 +203,48 @@ function renderQuestion(questions) {
     formContainer.appendChild(item);
   });
 }
+function renderQuestion4(questions) {
+  questions.forEach((fixedQuestion, index) => {
+    const item = document.createElement("li");
+
+    const form = document.createElement("form");
+    form.setAttribute("id", `quizForm-${index}`);
+    form.setAttribute("class", "quizForm");
+
+    const containerForm = document.createElement("div");
+    containerForm.setAttribute("class", "containerForm");
+
+    const question = document.createElement("div");
+    question.textContent = fixedQuestion.question;
+    question.setAttribute("class", "question");
+
+    containerForm.appendChild(question);
+    form.appendChild(containerForm);
+
+    const container = document.createElement("div");
+    container.setAttribute("class", "newContainer");
+
+    const textField = document.createElement("input");
+    textField.setAttribute("type", "text");
+    textField.setAttribute("name", `answer`);
+    textField.setAttribute("class", `textInput`);
+    textField.setAttribute("data-correct", fixedQuestion.answerText);
+
+    container.appendChild(textField);
+
+    form.appendChild(container);
+
+    item.appendChild(form);
+    formContainer.appendChild(item);
+  });
+}
 //
 function onSave() {
   const forms = document.querySelectorAll(".quizForm");
   let correctCount = 0;
 
   forms.forEach((form, index) => {
-    const selectedAnswer = form.querySelector(
-      'input[name="answer-' + index + '"]:checked'
-    );
+    const selectedAnswer = form.querySelector('input[name="answer"]');
 
     if (selectedAnswer) {
       const correctAnswer = selectedAnswer.getAttribute("data-correct");
@@ -182,3 +262,4 @@ const formContainer = document.getElementById("form-container");
 const btn = document.getElementById("btn");
 renderQuestion(questionFixed);
 renderQuestion(questionFixed2);
+renderQuestion4(questionFixed4);

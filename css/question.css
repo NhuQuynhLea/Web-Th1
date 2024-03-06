@@ -128,3 +128,8 @@ li {
 button:hover {
   background-color: var(--light-blue);
 }
+
+.textInput {
+  width: 100%;
+  height: 36px;
+}
