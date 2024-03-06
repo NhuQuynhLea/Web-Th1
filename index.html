@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="content-container">
+        <form id="inputForm">
+            <h1>Thông tin tiểu sử</h1>
+
+            <div class="input-box">
+                <input id="inputFullname" type="text" placeholder="Họ và tên" required>
+            </div>
+
+            <div class="input-box">
+                <input id="inputDob" type="text" placeholder="Ngày tháng năm sinh" required>
+            </div>
+            <div class="input-box">
+                <input id="inputId" type="text" placeholder="CCCD" required>
+            </div>
+            <div class="input-box">
+                <input id="inputAddress" type="text" placeholder="Địa chỉ thường trú" required>
+            </div>
+            <button onclick="onSave()" type="button" class="btn">Lưu</button>
+        </form>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
