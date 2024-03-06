@@ -67,12 +67,52 @@ const questionFixed2 = [
     options: ["Madrid", "Rome", "Paris", "Berlin"],
     answerText: "Madrid",
   },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    options: ["Mars", "Venus", "Earth", "Jupiter"],
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    options: ["Madrid", "Rome", "Paris", "Berlin"],
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    options: ["Mars", "Venus", "Earth", "Jupiter"],
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    options: ["Madrid", "Rome", "Paris", "Berlin"],
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    options: ["Mars", "Venus", "Earth", "Jupiter"],
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    options: ["Madrid", "Rome", "Paris", "Berlin"],
+    answerText: "Madrid",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    options: ["Mars", "Venus", "Earth", "Jupiter"],
+    answerText: "Mars",
+  },
 ];
 
 function renderQuestion(questions) {
   // formContainer.innerHTML = "";
   questions.forEach((fixedQuestion, index) => {
     const item = document.createElement("li");
+
     const form = document.createElement("form");
     form.setAttribute("id", `quizForm-${index}`);
     form.setAttribute("class", "quizForm");
@@ -82,6 +122,7 @@ function renderQuestion(questions) {
 
     const question = document.createElement("div");
     question.textContent = fixedQuestion.question;
+    question.setAttribute("class", "question");
 
     containerForm.appendChild(question);
     form.appendChild(containerForm);
@@ -95,7 +136,8 @@ function renderQuestion(questions) {
       optionInput.setAttribute("name", `answer-${index}`);
       optionInput.setAttribute("class", "option-radio");
       optionInput.setAttribute("value", option);
-      optionInput.setAttribute("data-correct", fixedQuestion.answerText); // Store the correct answer
+      optionInput.setAttribute("data-correct", fixedQuestion.answerText);
+      optionInput.setAttribute("class", "option");
 
       const textField = document.createElement("input");
       textField.setAttribute("type", "text");
@@ -113,11 +155,6 @@ function renderQuestion(questions) {
     item.appendChild(form);
     formContainer.appendChild(item);
   });
-
-  //   const submitButton = document.createElement("button");
-  //   submitButton.textContent = "Submit Answers";
-  //   submitButton.addEventListener("click", checkAnswers);
-  //   formContainer.appendChild(submitButton);
 }
 //
 function onSave() {
