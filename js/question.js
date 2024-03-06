@@ -50,9 +50,27 @@ const questionFixed = [
     answerText: "false",
   },
 ];
+const questionFixed2 = [
+  {
+    question: "Ai là người sáng lập của Microsoft?",
+    options: ["Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Jeff Bezos"],
+    answerText: "Bill Gates",
+  },
+  {
+    question:
+      "Trong hệ mặt trời, hành tinh nào là hành tinh thứ tư từ Mặt Trời?",
+    options: ["Mars", "Venus", "Earth", "Jupiter"],
+    answerText: "Mars",
+  },
+  {
+    question: "Thủ đô của Pháp là gì?",
+    options: ["Madrid", "Rome", "Paris", "Berlin"],
+    answerText: "Madrid",
+  },
+];
 
 function renderQuestion(questions) {
-  formContainer.innerHTML = "";
+  // formContainer.innerHTML = "";
   questions.forEach((fixedQuestion, index) => {
     const item = document.createElement("li");
     const form = document.createElement("form");
@@ -96,13 +114,13 @@ function renderQuestion(questions) {
     formContainer.appendChild(item);
   });
 
-  const submitButton = document.createElement("button");
-  submitButton.textContent = "Submit Answers";
-  submitButton.addEventListener("click", checkAnswers);
-  formContainer.appendChild(submitButton);
+  //   const submitButton = document.createElement("button");
+  //   submitButton.textContent = "Submit Answers";
+  //   submitButton.addEventListener("click", checkAnswers);
+  //   formContainer.appendChild(submitButton);
 }
-
-function checkAnswers() {
+//
+function onSave() {
   const forms = document.querySelectorAll(".quizForm");
   let correctCount = 0;
 
@@ -110,14 +128,10 @@ function checkAnswers() {
     const selectedAnswer = form.querySelector(
       'input[name="answer-' + index + '"]:checked'
     );
+
     if (selectedAnswer) {
       const correctAnswer = selectedAnswer.getAttribute("data-correct");
-      if (correctAnswer === "true" && selectedAnswer.value === "true") {
-        correctCount++;
-      } else if (
-        correctAnswer === "false" &&
-        selectedAnswer.value === "false"
-      ) {
+      if (correctAnswer === selectedAnswer.value) {
         correctCount++;
       }
     }
@@ -128,4 +142,6 @@ function checkAnswers() {
 }
 
 const formContainer = document.getElementById("form-container");
+const btn = document.getElementById("btn");
 renderQuestion(questionFixed);
+renderQuestion(questionFixed2);
