@@ -289,7 +289,7 @@ function onSave() {
   console.log(ques);
   localStorage.setItem("correctCount", correctCount);
   localStorage.setItem("data", ques);
-  // window.location.href = "./result.html";
+  window.location.href = "./result.html";
 }
 
 const formContainer = document.getElementById("form-container");
