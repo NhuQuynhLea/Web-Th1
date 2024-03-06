@@ -216,7 +216,7 @@ function renderQuestion4(questions) {
 
     const question = document.createElement("div");
     question.textContent = fixedQuestion.question;
-    question.setAttribute("class", "question");
+    question.setAttribute("class", "question4");
 
     containerForm.appendChild(question);
     form.appendChild(containerForm);
@@ -242,9 +242,20 @@ function renderQuestion4(questions) {
 function onSave() {
   const forms = document.querySelectorAll(".quizForm");
   let correctCount = 0;
-
+  var ques = [];
   forms.forEach((form, index) => {
-    const selectedAnswer = form.querySelector('input[name="answer"]');
+    var questionInput = "";
+
+    if (form.querySelector(".question") != null) {
+      questionInput = form.querySelector(".question").textContent;
+    } else {
+      questionInput = form.querySelector(".question4").textContent;
+    }
+
+    const selectedAnswer = form.querySelector(
+      'input[name="answer-' + index + '"]:checked'
+    );
+    const selectedAnswer4 = form.querySelector('input[name="answer"]');
 
     if (selectedAnswer) {
       const correctAnswer = selectedAnswer.getAttribute("data-correct");
@@ -252,10 +263,33 @@ function onSave() {
         correctCount++;
       }
     }
+    if (selectedAnswer4) {
+      const correctAnswer = selectedAnswer4.getAttribute("data-correct");
+      if (correctAnswer === selectedAnswer4.value) {
+        correctCount++;
+      }
+    }
+    var answerInput = "";
+    var answerText = "";
+    if (selectedAnswer != null) {
+      answerInput = selectedAnswer.value;
+      answerText = selectedAnswer.getAttribute("data-correct");
+    }
+
+    if (selectedAnswer4 != null) {
+      answerInput = selectedAnswer4.value;
+      answerText = selectedAnswer4.getAttribute("data-correct");
+    }
+    ques.push({
+      question: questionInput,
+      answerInput: answerInput,
+      answerText: answerText,
+    });
   });
-  console.log(correctCount);
+  console.log(ques);
   localStorage.setItem("correctCount", correctCount);
-  window.location.href = "./result.html";
+  localStorage.setItem("data", ques);
+  // window.location.href = "./result.html";
 }
 
 const formContainer = document.getElementById("form-container");
